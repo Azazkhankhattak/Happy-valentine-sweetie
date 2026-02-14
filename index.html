@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To My Forever Valentine</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blush:#f8d7da;
+  --deep-red:#8b1e3f;
+  --cream:#fff8f0;
+  --gold:#d4af37;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{
+  font-family:'Playfair Display', serif;
+  background:var(--cream);
+  color:var(--deep-red);
+  overflow-x:hidden;
+}
+
+/* Floating Heart Cursor */
+.heart{
+  position:fixed;
+  pointer-events:none;
+  font-size:18px;
+  animation:float 1s linear forwards;
+}
+@keyframes float{
+  to{transform:translateY(-50px);opacity:0;}
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+  url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1600&q=80') center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:20px;
+}
+.hero h1{
+  font-family:'Great Vibes', cursive;
+  font-size:3.5rem;
+  animation:fadeIn 2s ease;
+}
+.hero p{
+  font-size:1.2rem;
+  margin:20px 0;
+  animation:fadeIn 3s ease;
+}
+.btn{
+  padding:12px 28px;
+  background:var(--gold);
+  color:white;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:1rem;
+  box-shadow:0 0 15px var(--gold);
+  transition:.3s;
+}
+.btn:hover{transform:scale(1.1);}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* SECTION */
+section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+/* Timeline */
+.timeline-item{
+  margin:20px auto;
+  max-width:600px;
+  background:var(--blush);
+  padding:20px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.4s;
+}
+.timeline-item:hover{transform:scale(1.03);}
+.timeline-content{
+  display:none;
+  margin-top:10px;
+  animation:fadeIn .5s ease;
+}
+
+/* Envelope */
+.envelope{
+  width:200px;
+  height:120px;
+  background:var(--deep-red);
+  margin:30px auto;
+  position:relative;
+  cursor:pointer;
+}
+.envelope:before{
+  content:'';
+  position:absolute;
+  border-left:100px solid transparent;
+  border-right:100px solid transparent;
+  border-top:60px solid #a52a4e;
+  top:-60px;
+}
+.letter{
+  display:none;
+  max-width:700px;
+  margin:20px auto;
+  white-space:pre-wrap;
+  border:1px solid var(--gold);
+  padding:20px;
+  border-radius:10px;
+}
+
+/* Quiz */
+.quiz button{
+  margin:5px;
+  padding:8px 16px;
+  border:none;
+  border-radius:20px;
+  background:var(--deep-red);
+  color:white;
+  cursor:pointer;
+}
+
+/* Promise Cards */
+.promise{
+  background:var(--blush);
+  margin:15px auto;
+  padding:20px;
+  max-width:500px;
+  border-radius:15px;
+  animation:fadeIn 2s ease;
+}
+
+/* Footer */
+footer{
+  padding:20px;
+  text-align:center;
+  background:var(--deep-red);
+  color:white;
+}
+
+/* Falling petals */
+.petal{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:fall 5s linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(100vh);}
+}
+
+/* Music Button */
+.music-toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:var(--gold);
+  border:none;
+  border-radius:50%;
+  padding:12px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:2.5rem;}
+}
+</style>
+</head>
+
+<body>
+
+<button class="music-toggle" onclick="toggleMusic()">🎵</button>
+<audio id="bg-music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/10/11/audio_12b6b9db46.mp3">
+</audio>
+
+<div class="hero">
+<h1>To My Forever Valentine ❤️</h1>
+<p>Every love story is beautiful, but ours is my favorite.</p>
+<a href="#journey"><button class="btn">Click to Begin Our Story</button></a>
+</div>
+
+<section id="journey">
+<h2>Our Journey</h2>
+
+<div class="timeline-item" onclick="toggleContent(this)">
+<strong>The day we met</strong>
+<div class="timeline-content">The moment our eyes met, my world shifted forever.</div>
+</div>
+
+<div class="timeline-item" onclick="toggleContent(this)">
+<strong>Our first memory together</strong>
+<div class="timeline-content">That first laugh we shared still echoes in my heart.</div>
+</div>
+
+<div class="timeline-item" onclick="toggleContent(this)">
+<strong>Our biggest challenge</strong>
+<div class="timeline-content">We stood together, and that made us unbreakable.</div>
+</div>
+
+<div class="timeline-item" onclick="toggleContent(this)">
+<strong>Today & Forever</strong>
+<div class="timeline-content">Every day with you is my favorite chapter.</div>
+</div>
+
+</section>
+
+<section>
+<h2>💌 A Letter For You</h2>
+<div class="envelope" onclick="openLetter()"></div>
+<div class="letter" id="letter"></div>
+<div id="proposal" style="display:none;">
+<p>Will you continue being my forever Valentine?</p>
+<button class="btn" onclick="celebrate()">💖 Yes, Always</button>
+<button class="btn" onclick="celebrate()">💘 Forever and Ever</button>
+</div>
+</section>
+
+<section class="quiz">
+<h2>How Well Do You Know Our Love?</h2>
+<p>Where was our first date?</p>
+<button onclick="quizResponse(true)">At our favorite café</button>
+<button onclick="quizResponse(false)">At the mall</button>
+<p id="quiz-feedback"></p>
+</section>
+
+<section>
+<h2>My Promises to You</h2>
+<div class="promise">I promise to always stand beside you.</div>
+<div class="promise">I promise to protect your smile.</div>
+<div class="promise">I promise to choose you every single day.</div>
+<div class="promise">I promise to grow with you.</div>
+<div class="promise">I promise to love you endlessly.</div>
+
+<h3>Happy Valentine’s Day, My Love ❤️</h3>
+</section>
+
+<footer>
+Made with Love by Your Husband
+</footer>
+
+<script>
+
+/* Timeline Toggle */
+function toggleContent(el){
+  const content = el.querySelector('.timeline-content');
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+/* Letter typing */
+const text = `My Love,
+
+Every single day with you feels like a blessing I never deserved but will always cherish.
+
+You are my calm in chaos, my warmth in winter, and my forever home.
+
+No matter where life takes us, I promise to walk beside you, hand in hand.
+
+Forever yours.`;
+
+function openLetter(){
+  const letter = document.getElementById('letter');
+  letter.style.display="block";
+  let i=0;
+  function type(){
+    if(i<text.length){
+      letter.innerHTML+=text.charAt(i);
+      i++;
+      setTimeout(type,30);
+    }else{
+      document.getElementById('proposal').style.display="block";
+    }
+  }
+  type();
+}
+
+/* Celebrate */
+function celebrate(){
+  alert("You just made me the happiest husband alive.");
+}
+
+/* Quiz */
+function quizResponse(correct){
+  const feedback = document.getElementById("quiz-feedback");
+  if(correct){
+    feedback.innerHTML="Of course! You remember everything about us ❤️";
+  }else{
+    feedback.innerHTML="Hmm... maybe we need another romantic date to refresh your memory 😉";
+  }
+}
+
+/* Music */
+function toggleMusic(){
+  const music = document.getElementById("bg-music");
+  music.paused ? music.play() : music.pause();
+}
+
+/* Floating Hearts */
+document.addEventListener('mousemove',e=>{
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.innerHTML='❤️';
+  heart.style.left=e.pageX+'px';
+  heart.style.top=e.pageY+'px';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),1000);
+});
+
+/* Falling Petals */
+setInterval(()=>{
+  const petal=document.createElement('div');
+  petal.className='petal';
+  petal.innerHTML='🌹';
+  petal.style.left=Math.random()*window.innerWidth+'px';
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(),5000);
+},1000);
+
+</script>
+
+</body>
+</html>
